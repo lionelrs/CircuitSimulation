@@ -3,6 +3,6 @@
 
 TEST(MyClassTest, Add)
 {
-    IComponent t;
+    nts::IComponent t;
     EXPECT_EQ(0, 0);
 }
