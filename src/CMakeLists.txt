@@ -11,6 +11,7 @@ add_executable(nts
     Gate4001.cpp
     Gate4011.cpp
     Gate4030.cpp
+    Gate4069.cpp
     Gate4071.cpp
     Gate4081.cpp
 )
