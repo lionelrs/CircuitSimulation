@@ -12,9 +12,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 # Include subdirectories
-add_subdirectory(src)
+
 
 if(BUILD_TESTS)
     include(FindGoogleTest)
     add_subdirectory(tests)
+else()
+    add_subdirectory(src)
 endif(BUILD_TESTS)
