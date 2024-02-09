@@ -2,6 +2,7 @@
 #include <FalseComponent.hpp>
 #include <Gate4001.hpp>
 #include <Gate4011.hpp>
+#include <Gate4030.hpp>
 #include <NandComponent.hpp>
 #include <NorComponent.hpp>
 #include <NotComponent.hpp>
@@ -214,4 +215,33 @@ TEST(ComponentTest, Gate4011OutputsCorrectly)
 
     // Output 11 = True
     EXPECT_EQ(gate->compute(11), nts::Tristate::True);
+}
+
+// Test for Gate4030
+TEST(ComponentTest, Gate4030OutputsCorrectly)
+{
+    std::unique_ptr<nts::IComponent> gate = std::make_unique<nts::Gate4030>();
+    std::unique_ptr<nts::IComponent> in1 = std::make_unique<nts::TrueComponent>();
+    std::unique_ptr<nts::IComponent> in2 = std::make_unique<nts::FalseComponent>();
+
+    gate->setLink(1, *in1, 1);
+    gate->setLink(2, *in1, 1);
+    gate->setLink(5, *in1, 1);
+    gate->setLink(6, *in2, 1);
+    gate->setLink(8, *in2, 1);
+    gate->setLink(9, *in1, 1);
+    gate->setLink(12, *in2, 1);
+    gate->setLink(13, *in2, 1);
+
+    // Output 3 = False
+    EXPECT_EQ(gate->compute(3), nts::Tristate::False);
+
+    // Output 4 = True
+    EXPECT_EQ(gate->compute(4), nts::Tristate::True);
+
+    // Output 10 = True
+    EXPECT_EQ(gate->compute(10), nts::Tristate::True);
+
+    // Output 11 = False
+    EXPECT_EQ(gate->compute(11), nts::Tristate::False);
 }

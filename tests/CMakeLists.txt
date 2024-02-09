@@ -17,6 +17,7 @@ add_executable(nts_tests
     ${PROJECT_SOURCE_DIR}/src/NorComponent.cpp
     ${PROJECT_SOURCE_DIR}/src/Gate4001.cpp
     ${PROJECT_SOURCE_DIR}/src/Gate4011.cpp
+    ${PROJECT_SOURCE_DIR}/src/Gate4030.cpp
 )
 target_link_libraries(nts_tests PRIVATE GTest::gtest_main)
 

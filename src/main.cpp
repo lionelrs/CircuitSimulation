@@ -2,6 +2,7 @@
 #include <FalseComponent.hpp>
 #include <Gate4001.hpp>
 #include <Gate4011.hpp>
+#include <Gate4030.hpp>
 #include <NotComponent.hpp>
 #include <TrueComponent.hpp>
 #include <memory>
@@ -13,7 +14,7 @@
 
 int main(int argc, char const *argv[])
 {
-    std::unique_ptr<nts::IComponent> gate = std::make_unique<nts::Gate4011>();
+    std::unique_ptr<nts::IComponent> gate = std::make_unique<nts::Gate4030>();
     std::unique_ptr<nts::IComponent> in1 = std::make_unique<nts::TrueComponent>();
     std::unique_ptr<nts::IComponent> in2 = std::make_unique<nts::FalseComponent>();
 

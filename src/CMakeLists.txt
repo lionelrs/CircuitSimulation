@@ -10,6 +10,7 @@ add_executable(nts
     NorComponent.cpp
     Gate4001.cpp
     Gate4011.cpp
+    Gate4030.cpp
 )
 target_include_directories(nts PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(nts PRIVATE ${PROJECT_SOURCE_DIR}/include)
