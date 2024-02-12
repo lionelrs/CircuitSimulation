@@ -7,6 +7,9 @@ FetchContent_MakeAvailable(googletest)
 # Define the test executable
 add_executable(nts_tests 
     main_test.cpp
+    ${PROJECT_SOURCE_DIR}/src/InputComponent.cpp
+    ${PROJECT_SOURCE_DIR}/src/OutputComponent.cpp
+    ${PROJECT_SOURCE_DIR}/src/ClockComponent.cpp
     ${PROJECT_SOURCE_DIR}/src/AndComponent.cpp
     ${PROJECT_SOURCE_DIR}/src/NandComponent.cpp
     ${PROJECT_SOURCE_DIR}/src/FalseComponent.cpp

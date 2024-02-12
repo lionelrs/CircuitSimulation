@@ -1,4 +1,5 @@
 #include <AndComponent.hpp>
+#include <ClockComponent.hpp>
 #include <FalseComponent.hpp>
 #include <Gate4001.hpp>
 #include <Gate4011.hpp>
@@ -6,15 +7,66 @@
 #include <Gate4069.hpp>
 #include <Gate4071.hpp>
 #include <Gate4081.hpp>
+#include <InputComponent.hpp>
 #include <NandComponent.hpp>
 #include <NorComponent.hpp>
 #include <NotComponent.hpp>
 #include <OrComponent.hpp>
+#include <OutputComponent.hpp>
 #include <TrueComponent.hpp>
 #include <XorComponent.hpp>
 #include <gtest/gtest.h>
 #include <nts/IComponent.hpp>
 
+// Test Input component
+TEST(ComponentTest, InputComponentOutputsCorrectly)
+{
+    nts::InputComponent inputComp;
+
+    EXPECT_EQ(inputComp.compute(1), nts::Tristate::Undefined);
+
+    inputComp.setState(nts::Tristate::True);
+    EXPECT_EQ(inputComp.compute(1), nts::Tristate::True);
+
+    inputComp.setState(nts::Tristate::False);
+    EXPECT_EQ(inputComp.compute(1), nts::Tristate::False);
+}
+
+// Test Ouput Component
+TEST(ComponentTest, OutputComponentOutputsCorrectly)
+{
+    nts::InputComponent inputComp;
+    nts::OutputComponent outputComp;
+
+    outputComp.setLink(1, inputComp, 1);
+
+    EXPECT_EQ(outputComp.compute(1), nts::Tristate::Undefined);
+
+    inputComp.setState(nts::Tristate::True);
+    EXPECT_EQ(outputComp.compute(1), nts::Tristate::True);
+
+    inputComp.setState(nts::Tristate::False);
+    EXPECT_EQ(outputComp.compute(1), nts::Tristate::False);
+}
+
+// Test Clock component
+TEST(ComponentTest, ClockComponentOutputsCorrectly)
+{
+    nts::ClockComponent clockComp;
+
+    EXPECT_EQ(clockComp.compute(1), nts::Tristate::Undefined);
+
+    clockComp.simulate(1);
+    EXPECT_EQ(clockComp.compute(1), nts::Tristate::True);
+
+    clockComp.simulate(2);
+    EXPECT_EQ(clockComp.compute(1), nts::Tristate::False);
+
+    clockComp.simulate(4);
+    EXPECT_EQ(clockComp.compute(1), nts::Tristate::False);
+}
+
+// Test for True component
 TEST(ComponentTest, TrueComponentOutputsTrue)
 {
     nts::TrueComponent trueComp;

@@ -1,5 +1,8 @@
 add_executable(nts 
     main.cpp
+    InputComponent.cpp
+    OutputComponent.cpp
+    ClockComponent.cpp
     AndComponent.cpp
     NandComponent.cpp
     FalseComponent.cpp
