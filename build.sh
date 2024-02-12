@@ -31,7 +31,7 @@ build_project() {
         mkdir -p $build_dir
     fi
     cd $build_dir
-    cmake -G "$CMAKE_GENERATOR" ..
+    cmake -G "$CMAKE_GENERATOR" -DBUILD_TESTS=OFF ..
     cmake --build .
     cd -
 }
